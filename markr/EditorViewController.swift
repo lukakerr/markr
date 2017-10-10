@@ -7,12 +7,11 @@
 //
 
 import Cocoa
+import Down
 
 let DEFAULT_THEME = "Light"
 let DEFAULT_FONT = "Monaco"
 let DEFAULT_FONT_SIZE = "12"
-
-import Down
 
 class EditorViewController: NSViewController {
 
@@ -39,19 +38,7 @@ class EditorViewController: NSViewController {
   
   @objc dynamic var editorText: String = "" {
     didSet {
-      let down = Down(markdownString: self.editorText)
-      
-      if let font = editor.font {
-        setFont(font: font)
-      }
-      
-      if let attrMarkdown = try? down.toAttributedString(),
-        let splitViewController = self.parent as? NSSplitViewController,
-        let markdownSplitView = splitViewController.splitViewItems.last,
-        let font = editor.font {
-          let markdownVC = markdownSplitView.viewController as? MarkdownViewController
-          markdownVC?.setMarkdown(markdownString: attrMarkdown, font: font)
-      }
+      loadMarkdown()
     }
   }
   
@@ -81,8 +68,42 @@ class EditorViewController: NSViewController {
     switch event.modifierFlags.intersection(.deviceIndependentFlagsMask) {
     case [.command] where event.characters == "s":
       print("cmd s")
+    case [.command] where event.characters == "o":
+      let dialog = NSOpenPanel()
+      
+      dialog.title = "Open a markdown file"
+      dialog.allowedFileTypes = ["md"]
+      dialog.allowsMultipleSelection = false
+      dialog.canChooseDirectories = false
+      
+      if (dialog.runModal() == NSApplication.ModalResponse.OK) {
+        let result = dialog.url
+        
+        if let result = result,
+          let contents = try? String(contentsOf: result, encoding: .utf8) {
+            editor.string = contents
+        }
+      }
     default:
       break
+    }
+    
+    loadMarkdown()
+  }
+  
+  func loadMarkdown() {
+    let down = Down(markdownString: editor.string)
+    
+    if let font = editor.font {
+      setFont(font: font)
+    }
+    
+    if let attrMarkdown = try? down.toAttributedString(),
+      let splitViewController = self.parent as? NSSplitViewController,
+      let markdownSplitView = splitViewController.splitViewItems.last,
+      let font = editor.font {
+      let markdownVC = markdownSplitView.viewController as? MarkdownViewController
+      markdownVC?.setMarkdown(markdownString: attrMarkdown, font: font)
     }
   }
   

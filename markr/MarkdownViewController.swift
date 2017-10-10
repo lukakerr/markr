@@ -26,14 +26,14 @@ class MarkdownViewController: NSViewController {
       }
       
       let fontName: String = currentFont.fontName.lowercased()
-      var destinationFont: NSFont = NSFont(name: "Helvetica", size: currentFont.pointSize)!
+      var destinationFont: NSFont = NSFont(name: "Helvetica Neue Light", size: currentFont.pointSize)!
       
       if fontName.range(of: "bold") != nil {
-        if let font = NSFont(name: "Helvetica Bold", size: currentFont.pointSize) {
+        if let font = NSFont(name: "Helvetica Neue Bold", size: currentFont.pointSize) {
           destinationFont = font
         }
       } else if fontName.range(of: "italic") != nil {
-        if let font = NSFont(name: "Helvetica Oblique", size: currentFont.pointSize) {
+        if let font = NSFont(name: "Helvetica Neue Italic", size: currentFont.pointSize) {
           destinationFont = font
         }
       } else if fontName.range(of: "courier") != nil {
@@ -59,4 +59,5 @@ class MarkdownViewController: NSViewController {
     markdown.textStorage?.mutableString.setString("")
     markdown.textStorage?.append(newAttributedString)
   }
+
 }
