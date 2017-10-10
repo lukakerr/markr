@@ -10,7 +10,9 @@ import Cocoa
 
 let DEFAULT_THEME = "Light"
 let DEFAULT_FONT = "Monaco"
-let DEFAULT_FONT_SIZE = 15
+let DEFAULT_FONT_SIZE = "12"
+
+import Down
 
 class EditorViewController: NSViewController {
 
@@ -27,15 +29,29 @@ class EditorViewController: NSViewController {
       return event
     }
     
-    editor.font = NSFont(
-      name: DEFAULT_FONT
-      size: DEFAULT_FONT_SIZE
-    )
+    defaults.removeObject(forKey:"font")
+    defaults.removeObject(forKey:"fontSize")
+    
+    let defaultFont = defaults.string(forKey: "font") ?? DEFAULT_FONT
+    let defaultFontSize = defaults.string(forKey: "fontSize") ?? DEFAULT_FONT_SIZE
+    editor.font = NSFont(name: defaultFont, size: CGFloat(Int(defaultFontSize)!))
   }
   
   @objc dynamic var editorText: String = "" {
     didSet {
-      print(self.editorText)
+      let down = Down(markdownString: self.editorText)
+      
+      if let font = editor.font {
+        setFont(font: font)
+      }
+      
+      if let attrMarkdown = try? down.toAttributedString(),
+        let splitViewController = self.parent as? NSSplitViewController,
+        let markdownSplitView = splitViewController.splitViewItems.last,
+        let font = editor.font {
+          let markdownVC = markdownSplitView.viewController as? MarkdownViewController
+          markdownVC?.setMarkdown(markdownString: attrMarkdown, font: font)
+      }
     }
   }
   
@@ -48,6 +64,19 @@ class EditorViewController: NSViewController {
     set { self.editorText = newValue.string }
   }
   
+  func setFont(font: NSFont) {
+    let defaultFont = defaults.string(forKey: "font") ?? DEFAULT_FONT
+    let defaultFontSize = defaults.string(forKey: "fontSize") ?? DEFAULT_FONT_SIZE
+  
+    if (font.fontName != defaultFont) {
+      defaults.setValue(font.fontName, forKey: "font")
+    }
+  
+    if (font.pointSize != CGFloat(Int(defaultFontSize)!)) {
+      defaults.setValue(font.pointSize, forKey: "fontSize")
+    }
+  }
+  
   override func keyDown(with event: NSEvent) {
     switch event.modifierFlags.intersection(.deviceIndependentFlagsMask) {
     case [.command] where event.characters == "s":
@@ -58,11 +87,10 @@ class EditorViewController: NSViewController {
   }
   
   @IBAction func expandSidebar(_ sender: NSButton) {
-    if let splitViewController = self.parent as? NSSplitViewController {
-      let splitViewItem = splitViewController.splitViewItems
-      
-      splitViewItem.last!.collapseBehavior = .preferResizingSplitViewWithFixedSiblings
-      splitViewItem.last!.animator().isCollapsed = !splitViewItem.last!.isCollapsed
+    if let splitViewController = self.parent as? NSSplitViewController,
+      let markdownSplitView = splitViewController.splitViewItems.last {
+        markdownSplitView.collapseBehavior = .preferResizingSplitViewWithFixedSiblings
+        markdownSplitView.animator().isCollapsed = !markdownSplitView.isCollapsed
     }
   }
     
