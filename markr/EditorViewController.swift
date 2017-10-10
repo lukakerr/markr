@@ -11,11 +11,12 @@ import Down
 
 let DEFAULT_THEME = "Light"
 let DEFAULT_FONT = "Monaco"
-let DEFAULT_FONT_SIZE = "12"
+let DEFAULT_FONT_SIZE = "14"
 
 class EditorViewController: NSViewController {
 
   @IBOutlet var editor: NSTextView!
+  @IBOutlet weak var editorBackground: NSVisualEffectView!
   
   let defaults = UserDefaults.standard
   var editingFile = false
@@ -30,12 +31,24 @@ class EditorViewController: NSViewController {
       return event
     }
     
-    defaults.removeObject(forKey:"font")
-    defaults.removeObject(forKey:"fontSize")
+    // Register for theme change notification
+    NotificationCenter.default.addObserver(
+      self,
+      selector: #selector(self.setTheme),
+      name: NSNotification.Name(rawValue: "themeChangedNotification"),
+      object: nil
+    )
+    
+//    defaults.removeObject(forKey:"font")
+//    defaults.removeObject(forKey:"fontSize")
+    
+    editor.insertionPointColor = NSColor(red:0.75, green:0.75, blue:0.75, alpha:1.00)
     
     let defaultFont = defaults.string(forKey: "font") ?? DEFAULT_FONT
     let defaultFontSize = defaults.string(forKey: "fontSize") ?? DEFAULT_FONT_SIZE
     editor.font = NSFont(name: defaultFont, size: CGFloat(Int(defaultFontSize)!))
+    
+    setTheme(nil)
   }
   
   @objc dynamic var editorText: String = "" {
@@ -51,6 +64,24 @@ class EditorViewController: NSViewController {
   @objc private var attributedTextInput: NSAttributedString {
     get { return NSAttributedString(string: self.editorText) }
     set { self.editorText = newValue.string }
+  }
+  
+  @objc func setTheme(_ notification: Notification?) {
+    var theme = notification?.object as? String ?? defaults.string(forKey: "theme")
+    if theme == nil {
+      theme = DEFAULT_THEME
+    }
+    if let theme = theme {
+      if (theme == "Light") {
+        self.view.window?.appearance = NSAppearance(named: NSAppearance.Name.vibrantLight)
+        editorBackground.material = .light
+        editor.textColor = NSColor.black
+      } else {
+        self.view.window?.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
+        editorBackground.material = .dark
+        editor.textColor = NSColor.white
+      }
+    }
   }
   
   func setFont(font: NSFont) {
@@ -116,10 +147,9 @@ class EditorViewController: NSViewController {
     
     if let attrMarkdown = try? down.toAttributedString(),
       let splitViewController = self.parent as? NSSplitViewController,
-      let markdownSplitView = splitViewController.splitViewItems.last,
-      let font = editor.font {
+      let markdownSplitView = splitViewController.splitViewItems.last {
       let markdownVC = markdownSplitView.viewController as? MarkdownViewController
-      markdownVC?.setMarkdown(markdownString: attrMarkdown, font: font)
+      markdownVC?.setMarkdown(markdownString: attrMarkdown)
     }
   }
   

@@ -11,33 +11,71 @@ import Cocoa
 class MarkdownViewController: NSViewController {
 
   @IBOutlet var markdown: NSTextView!
+  @IBOutlet weak var markdownBackground: NSVisualEffectView!
+  
+  let defaults = UserDefaults.standard
   
   override func viewDidLoad() {
     super.viewDidLoad()
     markdown.layoutManager?.defaultAttachmentScaling = NSImageScaling.scaleProportionallyDown
+    
+    // Register for theme change notification
+    NotificationCenter.default.addObserver(
+      self,
+      selector: #selector(self.setTheme),
+      name: NSNotification.Name(rawValue: "themeChangedNotification"),
+      object: nil
+    )
+    
+    setTheme(nil)
   }
   
-  func setMarkdown(markdownString: NSAttributedString, font: NSFont) {
-    let newAttributedString = NSMutableAttributedString(attributedString: markdownString)
+  @objc func setTheme(_ notification: Notification?) {
+    var theme = notification?.object as? String ?? defaults.string(forKey: "theme")
+    if theme == nil {
+      theme = DEFAULT_THEME
+    }
+    if let theme = theme {
+      if (theme == "Light") {
+        self.view.window?.appearance = NSAppearance(named: NSAppearance.Name.vibrantLight)
+        markdownBackground.material = .light
+        markdown.textColor = NSColor.black
+      } else {
+        self.view.window?.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
+        markdownBackground.material = .dark
+        markdown.textColor = NSColor.white
+      }
+    }
+  }
+  
+  func setMarkdown(markdownString: NSAttributedString) {
+    let attrStr = NSMutableAttributedString(attributedString: markdownString)
     
     // Enumerate through all the font ranges
-    newAttributedString.enumerateAttribute(NSAttributedStringKey.font, in: NSMakeRange(0, newAttributedString.length), options: []) { value, range, stop in
+    attrStr.enumerateAttribute(NSAttributedStringKey.font, in: NSMakeRange(0, attrStr.length), options: []) { value, range, stop in
       guard var currentFont = value as? NSFont else {
         return
       }
       
+      let theme = defaults.string(forKey: "theme") ?? DEFAULT_THEME
+      
       let fontName: String = currentFont.fontName.lowercased()
+      
       var destinationFont: NSFont = NSFont(name: "Helvetica Light", size: currentFont.pointSize)!
       
-      if fontName.range(of: "bold") != nil {
+      let boldFont = fontName.range(of: "bold")
+      let italicFont = fontName.range(of: "italic")
+      let codeFont = fontName.range(of: "courier")
+      
+      if boldFont != nil {
         if let font = NSFont(name: "Helvetica Bold", size: currentFont.pointSize) {
           destinationFont = font
         }
-      } else if fontName.range(of: "italic") != nil {
+      } else if italicFont != nil {
         if let font = NSFont(name: "Helvetica Oblique", size: currentFont.pointSize) {
           destinationFont = font
         }
-      } else if fontName.range(of: "courier") != nil {
+      } else if codeFont != nil {
         if let font = NSFont(name: "Monaco", size: currentFont.pointSize),
           let newCurrentFont = NSFont(name: currentFont.fontName, size: currentFont.pointSize * 0.85) {
             destinationFont = font
@@ -45,22 +83,43 @@ class MarkdownViewController: NSViewController {
         }
       }
 
-      // An NSFontDescriptor describes the attributes of a font: family name, face name, point size, etc.
-      // Here we describe the replacement font as coming from the "Hoefler Text" family
       let fontDescriptor = destinationFont.fontDescriptor
 
-      // Ask the OS for an actual font that most closely matches the description above
+      // Ask the system for an actual font that most closely matches the description above
       if let newFontDescriptor = fontDescriptor.matchingFontDescriptors(withMandatoryKeys: [NSFontDescriptor.AttributeName.name]).first,
         let newFont = NSFont(descriptor: newFontDescriptor, size: currentFont.pointSize * 1.25) {
-          newAttributedString.addAttributes([NSAttributedStringKey.font: newFont], range: range)
-          
-          if fontName.range(of: "courier") != nil {
-            newAttributedString.addAttribute(
+          attrStr.addAttributes([NSAttributedStringKey.font: newFont], range: range)
+        
+          if (theme == "Light" && !(codeFont != nil)) {
+            attrStr.addAttribute(
               NSAttributedStringKey.foregroundColor,
-              value: NSColor(red:0, green:0, blue:0, alpha:0.5),
-              range: NSRange(location: range.location, length: range.length)
+              value: NSColor.black,
+              range: range
+            )
+          } else if (!(codeFont != nil)) {
+            attrStr.addAttribute(
+              NSAttributedStringKey.foregroundColor,
+              value: NSColor.white,
+              range: range
             )
           }
+        
+          if codeFont != nil {
+            if (theme == "Light") {
+              attrStr.addAttribute(
+                NSAttributedStringKey.foregroundColor,
+                value: NSColor(red:0, green:0, blue:0, alpha:0.5),
+                range: range
+              )
+            } else {
+              attrStr.addAttribute(
+                NSAttributedStringKey.foregroundColor,
+                value: NSColor(red:1, green:1, blue:1, alpha:0.75),
+                range: range
+              )
+            }
+          }
+        
 
           let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
           paragraphStyle.tabStops = [NSTextTab(textAlignment: .left, location: 15, options: NSDictionary() as! [NSTextTab.OptionKey : Any])]
@@ -69,7 +128,7 @@ class MarkdownViewController: NSViewController {
           paragraphStyle.headIndent = 0
           paragraphStyle.paragraphSpacing = 15
         
-          newAttributedString.addAttribute(
+          attrStr.addAttribute(
             NSAttributedStringKey.paragraphStyle,
             value: paragraphStyle,
             range: NSRange(location: range.location, length: range.length)
@@ -78,12 +137,12 @@ class MarkdownViewController: NSViewController {
     }
     
     // Enumerate over images in attributed string and center them
-    newAttributedString.enumerateAttribute(NSAttributedStringKey.attachment, in: NSMakeRange(0, newAttributedString.length), options: []) { value, range, stop in
+    attrStr.enumerateAttribute(NSAttributedStringKey.attachment, in: NSMakeRange(0, attrStr.length), options: []) { value, range, stop in
       if (value as? NSTextAttachment) != nil {
         let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         
-        newAttributedString.addAttribute(
+        attrStr.addAttribute(
           NSAttributedStringKey.paragraphStyle,
           value: paragraphStyle,
           range: NSRange(location: range.location, length: range.length)
@@ -92,7 +151,7 @@ class MarkdownViewController: NSViewController {
     }
     
     markdown.textStorage?.mutableString.setString("")
-    markdown.textStorage?.append(newAttributedString)
+    markdown.textStorage?.append(attrStr)
   }
 
 }

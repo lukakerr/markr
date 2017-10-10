@@ -12,6 +12,8 @@
 		A11CF9231F8B4D83002BD372 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A11CF9211F8B4D83002BD372 /* Main.storyboard */; };
 		A11CF92C1F8B4E2E002BD372 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11CF92B1F8B4E2E002BD372 /* EditorViewController.swift */; };
 		A11CF92E1F8B4E52002BD372 /* MarkdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11CF92D1F8B4E52002BD372 /* MarkdownViewController.swift */; };
+		A1E657AE1F8D88FE009B2768 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E657AD1F8D88FE009B2768 /* PreferencesViewController.swift */; };
+		A1E657B01F8D891C009B2768 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E657AF1F8D891C009B2768 /* PreferencesWindowController.swift */; };
 		CA63136207729E358D935359 /* Pods_markr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30CB73E6CA5A7AE5F9603168 /* Pods_markr.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +27,8 @@
 		A11CF9241F8B4D83002BD372 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A11CF92B1F8B4E2E002BD372 /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		A11CF92D1F8B4E52002BD372 /* MarkdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownViewController.swift; sourceTree = "<group>"; };
+		A1E657AD1F8D88FE009B2768 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
+		A1E657AF1F8D891C009B2768 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		C841AABFADB09B0858F5B83E /* Pods-markr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-markr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-markr/Pods-markr.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,6 +85,8 @@
 				A11CF91B1F8B4D83002BD372 /* AppDelegate.swift */,
 				A11CF91F1F8B4D83002BD372 /* Assets.xcassets */,
 				A11CF9211F8B4D83002BD372 /* Main.storyboard */,
+				A1E657AF1F8D891C009B2768 /* PreferencesWindowController.swift */,
+				A1E657AD1F8D88FE009B2768 /* PreferencesViewController.swift */,
 				A11CF92D1F8B4E52002BD372 /* MarkdownViewController.swift */,
 				A11CF92B1F8B4E2E002BD372 /* EditorViewController.swift */,
 				A11CF9241F8B4D83002BD372 /* Info.plist */,
@@ -218,7 +224,9 @@
 			files = (
 				A11CF92E1F8B4E52002BD372 /* MarkdownViewController.swift in Sources */,
 				A11CF92C1F8B4E2E002BD372 /* EditorViewController.swift in Sources */,
+				A1E657B01F8D891C009B2768 /* PreferencesWindowController.swift in Sources */,
 				A11CF91C1F8B4D83002BD372 /* AppDelegate.swift in Sources */,
+				A1E657AE1F8D88FE009B2768 /* PreferencesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

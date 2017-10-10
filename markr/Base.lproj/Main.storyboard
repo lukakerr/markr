@@ -22,7 +22,11 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
+                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
+                                            <connections>
+                                                <segue destination="gyt-SE-RK4" kind="show" id="9CZ-L9-Imz"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
                                         <menuItem title="Services" id="NMo-om-nkz">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -726,6 +730,62 @@
             </objects>
             <point key="canvasLocation" x="79" y="745"/>
         </scene>
+        <!--Window Controller-->
+        <scene sceneID="46a-Vb-cXq">
+            <objects>
+                <customObject id="29k-dd-a8v" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <windowController id="gyt-SE-RK4" customClass="PreferencesWindowController" customModule="markr" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="cu7-Ke-0Kw">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="320" y="395" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2048" height="1257"/>
+                        <connections>
+                            <outlet property="delegate" destination="gyt-SE-RK4" id="Jyk-u5-j7D"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="kaZ-jF-Pm2" kind="relationship" relationship="window.shadowedContentViewController" id="uIj-tS-vIQ"/>
+                    </connections>
+                </windowController>
+            </objects>
+            <point key="canvasLocation" x="707" y="96"/>
+        </scene>
+        <!--Preferences View Controller-->
+        <scene sceneID="J9F-CK-2f0">
+            <objects>
+                <customObject id="UBT-wJ-IZo" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <viewController id="kaZ-jF-Pm2" customClass="PreferencesViewController" customModule="markr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="ES7-Ho-21f">
+                        <rect key="frame" x="0.0" y="0.0" width="242" height="110"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gDT-ub-gTy">
+                                <rect key="frame" x="18" y="42" width="206" height="24"/>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Jrt-7u-riq">
+                                    <font key="font" metaFont="system"/>
+                                    <segments>
+                                        <segment label="Light Theme"/>
+                                        <segment label="Dark Theme" selected="YES" tag="1"/>
+                                    </segments>
+                                </segmentedCell>
+                                <connections>
+                                    <action selector="themeChanged:" target="kaZ-jF-Pm2" id="LDb-Tf-CQh"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="gDT-ub-gTy" firstAttribute="top" secondItem="ES7-Ho-21f" secondAttribute="top" constant="45" id="HPu-f1-V3m"/>
+                            <constraint firstItem="gDT-ub-gTy" firstAttribute="centerX" secondItem="ES7-Ho-21f" secondAttribute="centerX" id="fiA-tL-Hoe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="themeButton" destination="gDT-ub-gTy" id="Cuz-cx-q4x"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1295" y="-9"/>
+        </scene>
         <!--Editor View Controller-->
         <scene sceneID="4tm-06-6eU">
             <objects>
@@ -805,6 +865,7 @@
                     </view>
                     <connections>
                         <outlet property="editor" destination="7j5-G1-2Rn" id="OTY-k8-sQG"/>
+                        <outlet property="editorBackground" destination="Mmq-IE-VDa" id="UQ8-BE-BQU"/>
                     </connections>
                 </viewController>
                 <customObject id="vsv-SA-HMq" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -869,6 +930,7 @@
                     </view>
                     <connections>
                         <outlet property="markdown" destination="3e2-qw-LVW" id="wta-ab-gD5"/>
+                        <outlet property="markdownBackground" destination="VUw-Q1-4y9" id="0kF-ic-XnC"/>
                     </connections>
                 </viewController>
                 <customObject id="fUN-OR-Iyc" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
