@@ -120,18 +120,19 @@ class MarkdownViewController: NSViewController {
             }
           }
         
-
           let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
           paragraphStyle.tabStops = [NSTextTab(textAlignment: .left, location: 15, options: NSDictionary() as! [NSTextTab.OptionKey : Any])]
           paragraphStyle.defaultTabInterval = 15
           paragraphStyle.firstLineHeadIndent = 0
           paragraphStyle.headIndent = 0
-          paragraphStyle.paragraphSpacing = 15
+          if (!(codeFont != nil)) {
+            paragraphStyle.paragraphSpacing = 15
+          }
         
           attrStr.addAttribute(
             NSAttributedStringKey.paragraphStyle,
             value: paragraphStyle,
-            range: NSRange(location: range.location, length: range.length)
+            range: range
           )
       }
     }

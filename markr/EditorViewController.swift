@@ -39,9 +39,6 @@ class EditorViewController: NSViewController {
       object: nil
     )
     
-//    defaults.removeObject(forKey:"font")
-//    defaults.removeObject(forKey:"fontSize")
-    
     editor.insertionPointColor = NSColor(red:0.75, green:0.75, blue:0.75, alpha:1.00)
     
     let defaultFont = defaults.string(forKey: "font") ?? DEFAULT_FONT
@@ -108,7 +105,7 @@ class EditorViewController: NSViewController {
           do {
             try editorText?.write(to: path, atomically: true, encoding: String.Encoding.utf8)
           } catch {
-            popup(message: "There was an error opening the file.")
+            popup(message: "There was an error saving the file.")
           }
         }
       }
@@ -117,6 +114,40 @@ class EditorViewController: NSViewController {
     }
     
     loadMarkdown()
+  }
+  
+  @IBAction func saveFile(_ sender: AnyObject?) {
+    let contents = editor.string
+    
+    if (editingFile && editingFilePath != nil) {
+      if let path = editingFilePath {
+        // May want to remove all text so dont check if editorText is empty
+        do {
+          try contents.write(to: path, atomically: true, encoding: String.Encoding.utf8)
+          return
+        } catch {
+          popup(message: "There was an error saving the file.")
+        }
+      }
+    }
+
+    let dialog = NSSavePanel()
+    
+    dialog.title = "Save a markdown file"
+    dialog.allowedFileTypes = ["md"]
+    dialog.canCreateDirectories = false
+    
+    if (dialog.runModal() == NSApplication.ModalResponse.OK) {
+      if let result = dialog.url {
+        do {
+          try contents.write(to: result, atomically: false, encoding: String.Encoding.utf8)
+          editingFile = true
+          editingFilePath = result
+        } catch {
+          self.popup(message: "There was an error saving the file.")
+        }
+      }
+    }
   }
   
   @IBAction func openFile(_ sender: AnyObject?) {
@@ -149,7 +180,7 @@ class EditorViewController: NSViewController {
       let splitViewController = self.parent as? NSSplitViewController,
       let markdownSplitView = splitViewController.splitViewItems.last {
       let markdownVC = markdownSplitView.viewController as? MarkdownViewController
-      markdownVC?.setMarkdown(markdownString: attrMarkdown)
+        markdownVC?.setMarkdown(markdownString: attrMarkdown)
     }
   }
   
