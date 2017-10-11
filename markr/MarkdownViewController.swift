@@ -127,6 +127,8 @@ class MarkdownViewController: NSViewController {
           paragraphStyle.headIndent = 0
           if (!(codeFont != nil)) {
             paragraphStyle.paragraphSpacing = 15
+          } else {
+            paragraphStyle.paragraphSpacing = 7.5
           }
         
           attrStr.addAttribute(

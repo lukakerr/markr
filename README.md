@@ -9,3 +9,14 @@ Simply start typing and immediately see rendered markdown.
 - No delay in rendering markdown
 - Change font-size and font of editor
 - Minimal, lightweight and easy to use
+- Dark and light modes
+
+### Screenshots
+
+<div style="text-align:center">
+  <img src ="https://i.imgur.com/8aiucxU.png" alt="markr">
+</div>
+<br><br>
+<div style="text-align:center">
+  <img src ="https://i.imgur.com/BK4lWB3.png" alt="markr-2">
+</div>
