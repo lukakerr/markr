@@ -11,6 +11,10 @@ Simply start typing and immediately see rendered markdown.
 - Minimal, lightweight and easy to use
 - Dark and light modes
 
+### Download
+
+Download at [lukakerr.github.io](https://lukakerr.github.io/projects/markr.html)
+
 ### Screenshots
 
 <div style="text-align:center">
