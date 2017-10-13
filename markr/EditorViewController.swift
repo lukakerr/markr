@@ -178,7 +178,7 @@ class EditorViewController: NSViewController {
       let splitViewController = self.parent as? NSSplitViewController,
       let markdownSplitView = splitViewController.splitViewItems.last {
       let markdownVC = markdownSplitView.viewController as? MarkdownViewController
-        markdownVC?.setMarkdown(markdownString: attrMarkdown)
+        markdownVC?.setMarkdown(attrMarkdown)
     }
   }
   
