@@ -12,6 +12,7 @@ class MarkdownViewController: NSViewController {
 
   @IBOutlet var markdown: NSTextView!
   @IBOutlet weak var markdownBackground: NSVisualEffectView!
+  @IBOutlet weak var wordCountLabel: NSTextField!
   
   let defaults = UserDefaults.standard
   
@@ -155,6 +156,23 @@ class MarkdownViewController: NSViewController {
     
     markdown.textStorage?.mutableString.setString("")
     markdown.textStorage?.append(attrStr)
+    setWordCountLabel()
+  }
+  
+  func setWordCountLabel() {
+    if let splitViewController = self.parent as? NSSplitViewController,
+      let editorSplitView = splitViewController.splitViewItems.first {
+        let editorViewController = editorSplitView.viewController as? EditorViewController
+        if let charCount = editorViewController?.editor.textStorage?.words.count {
+          if charCount == 1 {
+            wordCountLabel.stringValue = String(charCount) + " word"
+          } else if charCount > 0 {
+            wordCountLabel.stringValue = String(charCount) + " words"
+          } else {
+            wordCountLabel.stringValue = ""
+          }
+        }
+    }
   }
 
 }

@@ -18,8 +18,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     window.appearance = NSAppearance(named: NSAppearance.Name.vibrantLight)
     
     // Title bar properties
-    window.titleVisibility = NSWindow.TitleVisibility.hidden;
-    window.titlebarAppearsTransparent = true;
     window.styleMask.insert(.fullSizeContentView)
     window.isOpaque = false
     window.invalidateShadow()

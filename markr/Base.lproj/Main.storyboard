@@ -607,19 +607,6 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="View" id="HyV-fh-RgO">
                                     <items>
-                                        <menuItem title="Show Toolbar" keyEquivalent="t" id="snW-S8-Cw5">
-                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
-                                            <connections>
-                                                <action selector="toggleToolbarShown:" target="Ady-hI-5gd" id="BXY-wc-z0C"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Customize Toolbar…" id="1UK-8n-QPP">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="runToolbarCustomizationPalette:" target="Ady-hI-5gd" id="pQI-g3-MTW"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="hB3-LF-h0Y"/>
                                         <menuItem title="Show Sidebar" keyEquivalent="s" id="kIP-vf-haE">
                                             <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                             <connections>
@@ -682,18 +669,30 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="67" y="-69"/>
+            <point key="canvasLocation" x="110" y="-321"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="597" y="322" width="480" height="400"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <value key="minSize" type="size" width="400" height="200"/>
+                        <toolbar key="toolbar" implicitIdentifier="EDABFF3A-EA28-420B-9335-E9BE29CC2231" autosavesConfiguration="NO" allowsUserCustomization="NO" showsBaselineSeparator="NO" displayMode="iconAndLabel" sizeMode="regular" id="wTW-bR-yKO">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="keS-85-CPD"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="Xqc-30-P3n"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="DIe-vx-nbr"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="5wy-Xs-ijo"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="WRf-BK-cY6"/>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="WRf-BK-cY6"/>
+                            </defaultToolbarItems>
+                        </toolbar>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
@@ -729,7 +728,7 @@
                 </splitViewController>
                 <customObject id="CCi-ku-Nik" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="79" y="745"/>
+            <point key="canvasLocation" x="75" y="790"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="46a-Vb-cXq">
@@ -799,16 +798,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                                 <subviews>
                                     <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DC3-EL-kW9">
-                                        <rect key="frame" x="20" y="20" width="560" height="445"/>
+                                        <rect key="frame" x="20" y="30" width="560" height="430"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="cVQ-Jl-B0g">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="445"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="430"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textView drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" allowsUndo="YES" textCompletion="NO" id="7j5-G1-2Rn">
-                                                    <rect key="frame" x="0.0" y="0.0" width="560" height="445"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="560" height="430"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    <size key="minSize" width="560" height="445"/>
+                                                    <size key="minSize" width="560" height="430"/>
                                                     <size key="maxSize" width="560" height="10000000"/>
                                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <connections>
@@ -832,7 +831,7 @@
                                         </scroller>
                                     </scrollView>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="R6J-Ms-uYq">
-                                        <rect key="frame" x="566" y="461" width="14" height="19"/>
+                                        <rect key="frame" x="566" y="473" width="14" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="19" id="XAt-EG-4wT"/>
                                         </constraints>
@@ -846,11 +845,21 @@
                                             <action selector="expandSidebar:" target="iwu-Q3-E8a" id="dJy-RJ-0K6"/>
                                         </connections>
                                     </button>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bfP-Ob-0vA">
+                                        <rect key="frame" x="6" y="8" width="4" height="17"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="n0Q-U6-Y1T">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="DC3-EL-kW9" firstAttribute="top" secondItem="Mmq-IE-VDa" secondAttribute="top" constant="35" id="1O3-xc-ay2"/>
-                                    <constraint firstItem="R6J-Ms-uYq" firstAttribute="top" secondItem="Mmq-IE-VDa" secondAttribute="top" constant="20" symbolic="YES" id="9ZQ-GV-ntQ"/>
-                                    <constraint firstAttribute="bottom" secondItem="DC3-EL-kW9" secondAttribute="bottom" constant="20" symbolic="YES" id="HIw-CA-JHA"/>
+                                    <constraint firstItem="DC3-EL-kW9" firstAttribute="top" secondItem="Mmq-IE-VDa" secondAttribute="top" constant="40" id="1O3-xc-ay2"/>
+                                    <constraint firstItem="bfP-Ob-0vA" firstAttribute="leading" secondItem="Mmq-IE-VDa" secondAttribute="leading" constant="8" id="2Is-UT-06v"/>
+                                    <constraint firstItem="R6J-Ms-uYq" firstAttribute="top" secondItem="Mmq-IE-VDa" secondAttribute="top" constant="8" id="9ZQ-GV-ntQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="bfP-Ob-0vA" secondAttribute="bottom" constant="8" id="EnX-2E-DcB"/>
+                                    <constraint firstAttribute="bottom" secondItem="DC3-EL-kW9" secondAttribute="bottom" constant="30" id="HIw-CA-JHA"/>
                                     <constraint firstAttribute="trailing" secondItem="DC3-EL-kW9" secondAttribute="trailing" constant="20" symbolic="YES" id="QTy-gt-5Nx"/>
                                     <constraint firstItem="DC3-EL-kW9" firstAttribute="leading" secondItem="Mmq-IE-VDa" secondAttribute="leading" constant="20" symbolic="YES" id="ngf-gV-67W"/>
                                     <constraint firstItem="R6J-Ms-uYq" firstAttribute="trailing" secondItem="DC3-EL-kW9" secondAttribute="trailing" id="xug-ot-KZT"/>
@@ -867,6 +876,7 @@
                     <connections>
                         <outlet property="editor" destination="7j5-G1-2Rn" id="OTY-k8-sQG"/>
                         <outlet property="editorBackground" destination="Mmq-IE-VDa" id="UQ8-BE-BQU"/>
+                        <outlet property="fileLabel" destination="bfP-Ob-0vA" id="tXR-Vo-ApA"/>
                     </connections>
                 </viewController>
                 <customObject id="vsv-SA-HMq" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -883,18 +893,32 @@
                         <subviews>
                             <visualEffectView blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="VUw-Q1-4y9">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="94j-qA-TIC">
+                                        <rect key="frame" x="590" y="8" width="4" height="17"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="5oi-Ff-i5W">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="94j-qA-TIC" secondAttribute="bottom" constant="8" id="Nnd-CC-yKg"/>
+                                    <constraint firstAttribute="trailing" secondItem="94j-qA-TIC" secondAttribute="trailing" constant="8" id="WFz-u5-RlQ"/>
+                                </constraints>
                             </visualEffectView>
                             <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKG-uc-AHp">
-                                <rect key="frame" x="20" y="20" width="560" height="455"/>
+                                <rect key="frame" x="20" y="30" width="560" height="440"/>
                                 <clipView key="contentView" focusRingType="none" drawsBackground="NO" copiesOnScroll="NO" id="q9i-5o-5nX">
-                                    <rect key="frame" x="0.0" y="0.0" width="560" height="455"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="560" height="440"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView focusRingType="none" editable="NO" drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" allowsUndo="YES" textCompletion="NO" id="3e2-qw-LVW">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="455"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="440"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="560" height="455"/>
+                                            <size key="minSize" width="560" height="440"/>
                                             <size key="maxSize" width="560" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <connections>
@@ -921,17 +945,18 @@
                         <constraints>
                             <constraint firstItem="VUw-Q1-4y9" firstAttribute="leading" secondItem="MI3-V7-z8Z" secondAttribute="leading" id="7yj-EJ-7Lo"/>
                             <constraint firstItem="VUw-Q1-4y9" firstAttribute="top" secondItem="MI3-V7-z8Z" secondAttribute="top" id="AdW-XS-TQu"/>
-                            <constraint firstItem="YKG-uc-AHp" firstAttribute="top" secondItem="MI3-V7-z8Z" secondAttribute="top" constant="25" id="BAf-L2-Ofa"/>
+                            <constraint firstItem="YKG-uc-AHp" firstAttribute="top" secondItem="MI3-V7-z8Z" secondAttribute="top" constant="30" id="BAf-L2-Ofa"/>
                             <constraint firstAttribute="trailing" secondItem="YKG-uc-AHp" secondAttribute="trailing" constant="20" id="LYz-Ym-pNg"/>
                             <constraint firstItem="VUw-Q1-4y9" firstAttribute="centerX" secondItem="YKG-uc-AHp" secondAttribute="centerX" id="N8c-iS-TPb"/>
                             <constraint firstItem="YKG-uc-AHp" firstAttribute="leading" secondItem="MI3-V7-z8Z" secondAttribute="leading" constant="20" id="cA0-GT-OzP"/>
                             <constraint firstAttribute="bottom" secondItem="VUw-Q1-4y9" secondAttribute="bottom" id="cko-HB-EEv"/>
-                            <constraint firstAttribute="bottom" secondItem="YKG-uc-AHp" secondAttribute="bottom" constant="20" id="kFD-fD-6Le"/>
+                            <constraint firstAttribute="bottom" secondItem="YKG-uc-AHp" secondAttribute="bottom" constant="30" id="kFD-fD-6Le"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="markdown" destination="3e2-qw-LVW" id="wta-ab-gD5"/>
                         <outlet property="markdownBackground" destination="VUw-Q1-4y9" id="0kF-ic-XnC"/>
+                        <outlet property="wordCountLabel" destination="94j-qA-TIC" id="ijg-UJ-zcd"/>
                     </connections>
                 </viewController>
                 <customObject id="fUN-OR-Iyc" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

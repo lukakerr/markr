@@ -17,6 +17,7 @@ class EditorViewController: NSViewController {
 
   @IBOutlet var editor: NSTextView!
   @IBOutlet weak var editorBackground: NSVisualEffectView!
+  @IBOutlet weak var fileLabel: NSTextField!
   
   let defaults = UserDefaults.standard
   var editingFile = false
@@ -95,24 +96,6 @@ class EditorViewController: NSViewController {
   }
   
   override func keyDown(with event: NSEvent) {
-    switch event.modifierFlags.intersection(.deviceIndependentFlagsMask) {
-    case [.command] where event.characters == "s":
-      // Check if a file is already open in the editor
-      if (editingFile && editingFilePath != nil) {
-        if let path = editingFilePath {
-          let editorText = editor.textStorage?.string
-          // May want to remove all text so dont check if editorText is empty
-          do {
-            try editorText?.write(to: path, atomically: true, encoding: String.Encoding.utf8)
-          } catch {
-            popup(message: "There was an error saving the file.")
-          }
-        }
-      }
-    default:
-      break
-    }
-    
     loadMarkdown()
   }
   
@@ -140,9 +123,10 @@ class EditorViewController: NSViewController {
     if (dialog.runModal() == NSApplication.ModalResponse.OK) {
       if let result = dialog.url {
         do {
-          try contents.write(to: result, atomically: false, encoding: String.Encoding.utf8)
+          try contents.write(to: result, atomically: true, encoding: String.Encoding.utf8)
           editingFile = true
           editingFilePath = result
+          setFileLabel(result.lastPathComponent)
         } catch {
           self.popup(message: "There was an error saving the file.")
         }
@@ -164,6 +148,7 @@ class EditorViewController: NSViewController {
         editor.string = contents
         editingFile = true
         editingFilePath = result
+        setFileLabel(result.lastPathComponent)
       }
     }
     loadMarkdown()
@@ -182,6 +167,10 @@ class EditorViewController: NSViewController {
       let markdownVC = markdownSplitView.viewController as? MarkdownViewController
         markdownVC?.setMarkdown(markdownString: attrMarkdown)
     }
+  }
+  
+  func setFileLabel(_ fileName: String) {
+    fileLabel.stringValue = fileName
   }
   
   func popup(message: String) {
