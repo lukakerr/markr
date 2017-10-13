@@ -154,6 +154,19 @@ class EditorViewController: NSViewController {
     loadMarkdown()
   }
   
+  func loadFile(_ filePath: String) {
+    if let content = try? String(contentsOfFile: filePath, encoding: .utf8) {
+      editor.string = content
+      editingFile = true
+      if let urlPath = URL(string: filePath) {
+        editingFilePath = urlPath
+        setFileLabel(urlPath.lastPathComponent)
+      }
+    }
+    loadMarkdown()
+    MarkdownViewController().setWordCountLabel()
+  }
+  
   func loadMarkdown() {
     let down = Down(markdownString: editor.string)
     

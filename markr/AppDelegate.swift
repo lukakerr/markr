@@ -30,6 +30,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
    return true
   }
+  
+  func application(_ sender: NSApplication, openFile filename: String) -> Bool {
+    let window = NSApplication.shared.windows.first!
+    if let editorViewController = window.contentViewController?.childViewControllers[0] as? EditorViewController {
+      editorViewController.loadFile(filename)
+    }
+    return true
+  }
 
 
 }
