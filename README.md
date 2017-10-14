@@ -10,6 +10,7 @@ Simply start typing and immediately see rendered markdown.
 - Change font-size and font of editor
 - Minimal, lightweight and easy to use
 - Dark and light modes
+- Word count
 
 ### Download
 
@@ -18,9 +19,9 @@ Download at [lukakerr.github.io](https://lukakerr.github.io/projects/markr.html)
 ### Screenshots
 
 <div style="text-align:center">
-  <img src ="https://i.imgur.com/8aiucxU.png" alt="markr">
+  <img src="https://i.imgur.com/5l7AKtk.png" alt="markr">
 </div>
 <br><br>
 <div style="text-align:center">
-  <img src ="https://i.imgur.com/BK4lWB3.png" alt="markr-2">
+  <img src="https://i.imgur.com/4zhlqzc.png" alt="markr-2">
 </div>
