@@ -106,7 +106,7 @@ class EditorViewController: NSViewController {
       if let path = editingFilePath {
         // May want to remove all text so dont check if editorText is empty
         do {
-          try contents.write(to: path, atomically: true, encoding: String.Encoding.utf8)
+          try contents.write(to: path, atomically: true, encoding: .utf8)
           return
         } catch {
           popup(message: "There was an error saving the file.")
@@ -123,7 +123,7 @@ class EditorViewController: NSViewController {
     if (dialog.runModal() == NSApplication.ModalResponse.OK) {
       if let result = dialog.url {
         do {
-          try contents.write(to: result, atomically: true, encoding: String.Encoding.utf8)
+          try contents.write(to: result, atomically: true, encoding: .utf8)
           editingFile = true
           editingFilePath = result
           setFileLabel(result.lastPathComponent)
@@ -158,10 +158,10 @@ class EditorViewController: NSViewController {
     if let content = try? String(contentsOfFile: filePath, encoding: .utf8) {
       editor.string = content
       editingFile = true
-      if let urlPath = URL(string: filePath) {
-        editingFilePath = urlPath
-        setFileLabel(urlPath.lastPathComponent)
-      }
+      
+      let urlPath = NSURL.fileURL(withPath: filePath)
+      editingFilePath = urlPath
+      setFileLabel(urlPath.lastPathComponent)
     }
     loadMarkdown()
     MarkdownViewController().setWordCountLabel()
