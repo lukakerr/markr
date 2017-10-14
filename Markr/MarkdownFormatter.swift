@@ -1,6 +1,6 @@
 //
 //  MarkdownFormatter.swift
-//  markr
+//  Markr
 //
 //  Created by Luka Kerr on 14/10/17.
 //  Copyright © 2017 Luka Kerr. All rights reserved.

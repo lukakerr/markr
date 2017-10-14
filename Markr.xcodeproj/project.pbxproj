@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8ECA34E01C32FCE635BBF747 /* Pods_Markr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96279C154EC1116CACDD8B72 /* Pods_Markr.framework */; };
 		A11CF91C1F8B4D83002BD372 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11CF91B1F8B4D83002BD372 /* AppDelegate.swift */; };
 		A11CF9201F8B4D83002BD372 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A11CF91F1F8B4D83002BD372 /* Assets.xcassets */; };
 		A11CF9231F8B4D83002BD372 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A11CF9211F8B4D83002BD372 /* Main.storyboard */; };
@@ -19,9 +20,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01D78318DE81FBFC58E3BEDB /* Pods-Markr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Markr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Markr/Pods-Markr.debug.xcconfig"; sourceTree = "<group>"; };
 		30CB73E6CA5A7AE5F9603168 /* Pods_markr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_markr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7189F3471DB61056FDBA280B /* Pods-markr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-markr.release.xcconfig"; path = "Pods/Target Support Files/Pods-markr/Pods-markr.release.xcconfig"; sourceTree = "<group>"; };
-		A11CF9181F8B4D83002BD372 /* markr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = markr.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		75A34E546C0B89483395AEED /* Pods-Markr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Markr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Markr/Pods-Markr.release.xcconfig"; sourceTree = "<group>"; };
+		96279C154EC1116CACDD8B72 /* Pods_Markr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Markr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A11CF9181F8B4D83002BD372 /* Markr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Markr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A11CF91B1F8B4D83002BD372 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A11CF91F1F8B4D83002BD372 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A11CF9221F8B4D83002BD372 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -31,7 +34,6 @@
 		A1B5F19D1F9182AB0000B40D /* MarkdownFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownFormatter.swift; sourceTree = "<group>"; };
 		A1E657AD1F8D88FE009B2768 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		A1E657AF1F8D891C009B2768 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
-		C841AABFADB09B0858F5B83E /* Pods-markr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-markr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-markr/Pods-markr.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +42,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA63136207729E358D935359 /* Pods_markr.framework in Frameworks */,
+				8ECA34E01C32FCE635BBF747 /* Pods_Markr.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -49,8 +52,8 @@
 		4EEEC8943781F7D788EE116A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C841AABFADB09B0858F5B83E /* Pods-markr.debug.xcconfig */,
-				7189F3471DB61056FDBA280B /* Pods-markr.release.xcconfig */,
+				01D78318DE81FBFC58E3BEDB /* Pods-Markr.debug.xcconfig */,
+				75A34E546C0B89483395AEED /* Pods-Markr.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -59,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				30CB73E6CA5A7AE5F9603168 /* Pods_markr.framework */,
+				96279C154EC1116CACDD8B72 /* Pods_Markr.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -66,7 +70,7 @@
 		A11CF90F1F8B4D83002BD372 = {
 			isa = PBXGroup;
 			children = (
-				A11CF91A1F8B4D83002BD372 /* markr */,
+				A11CF91A1F8B4D83002BD372 /* Markr */,
 				A11CF9191F8B4D83002BD372 /* Products */,
 				4EEEC8943781F7D788EE116A /* Pods */,
 				5FE09FA72859E714A6EEF6FB /* Frameworks */,
@@ -76,12 +80,12 @@
 		A11CF9191F8B4D83002BD372 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A11CF9181F8B4D83002BD372 /* markr.app */,
+				A11CF9181F8B4D83002BD372 /* Markr.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A11CF91A1F8B4D83002BD372 /* markr */ = {
+		A11CF91A1F8B4D83002BD372 /* Markr */ = {
 			isa = PBXGroup;
 			children = (
 				A11CF91B1F8B4D83002BD372 /* AppDelegate.swift */,
@@ -94,15 +98,15 @@
 				A11CF92B1F8B4E2E002BD372 /* EditorViewController.swift */,
 				A11CF9241F8B4D83002BD372 /* Info.plist */,
 			);
-			path = markr;
+			path = Markr;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A11CF9171F8B4D83002BD372 /* markr */ = {
+		A11CF9171F8B4D83002BD372 /* Markr */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A11CF9281F8B4D83002BD372 /* Build configuration list for PBXNativeTarget "markr" */;
+			buildConfigurationList = A11CF9281F8B4D83002BD372 /* Build configuration list for PBXNativeTarget "Markr" */;
 			buildPhases = (
 				7F2056B993908F635F17F666 /* [CP] Check Pods Manifest.lock */,
 				A11CF9141F8B4D83002BD372 /* Sources */,
@@ -115,9 +119,9 @@
 			);
 			dependencies = (
 			);
-			name = markr;
+			name = Markr;
 			productName = markr;
-			productReference = A11CF9181F8B4D83002BD372 /* markr.app */;
+			productReference = A11CF9181F8B4D83002BD372 /* Markr.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -132,11 +136,11 @@
 				TargetAttributes = {
 					A11CF9171F8B4D83002BD372 = {
 						CreatedOnToolsVersion = 9.0;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
-			buildConfigurationList = A11CF9131F8B4D83002BD372 /* Build configuration list for PBXProject "markr" */;
+			buildConfigurationList = A11CF9131F8B4D83002BD372 /* Build configuration list for PBXProject "Markr" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -149,7 +153,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A11CF9171F8B4D83002BD372 /* markr */,
+				A11CF9171F8B4D83002BD372 /* Markr */,
 			);
 		};
 /* End PBXProject section */
@@ -179,7 +183,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-markr/Pods-markr-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Markr/Pods-Markr-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7F2056B993908F635F17F666 /* [CP] Check Pods Manifest.lock */ = {
@@ -193,7 +197,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-markr-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Markr-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -206,7 +210,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-markr/Pods-markr-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Markr/Pods-Markr-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Down/Down.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -215,7 +219,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-markr/Pods-markr-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Markr/Pods-Markr-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -356,33 +360,37 @@
 		};
 		A11CF9291F8B4D83002BD372 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C841AABFADB09B0858F5B83E /* Pods-markr.debug.xcconfig */;
+			baseConfigurationReference = 01D78318DE81FBFC58E3BEDB /* Pods-Markr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = QY544RDL2W;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = markr/Info.plist;
+				INFOPLIST_FILE = Markr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.lukakerr.markr;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.lukakerr.Markr;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
 		A11CF92A1F8B4D83002BD372 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7189F3471DB61056FDBA280B /* Pods-markr.release.xcconfig */;
+			baseConfigurationReference = 75A34E546C0B89483395AEED /* Pods-Markr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = markr/Info.plist;
+				DEVELOPMENT_TEAM = QY544RDL2W;
+				INFOPLIST_FILE = Markr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.lukakerr.markr;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.lukakerr.Markr;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
@@ -390,7 +398,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A11CF9131F8B4D83002BD372 /* Build configuration list for PBXProject "markr" */ = {
+		A11CF9131F8B4D83002BD372 /* Build configuration list for PBXProject "Markr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A11CF9261F8B4D83002BD372 /* Debug */,
@@ -399,7 +407,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A11CF9281F8B4D83002BD372 /* Build configuration list for PBXNativeTarget "markr" */ = {
+		A11CF9281F8B4D83002BD372 /* Build configuration list for PBXNativeTarget "Markr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A11CF9291F8B4D83002BD372 /* Debug */,

@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_markrVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_markrVersionString[];
+FOUNDATION_EXPORT double Pods_MarkrVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_MarkrVersionString[];
 

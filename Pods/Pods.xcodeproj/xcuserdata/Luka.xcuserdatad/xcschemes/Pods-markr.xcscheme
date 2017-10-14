@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B2B734836F1B3B8A6F9590BA71713863"
-               BuildableName = "Pods_markr.framework"
-               BlueprintName = "Pods-markr"
+               BlueprintIdentifier = "8F3F19EED093C37A0760BEC6A3E936C3"
+               BuildableName = "Pods_Markr.framework"
+               BlueprintName = "Pods-Markr"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,9 +47,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B2B734836F1B3B8A6F9590BA71713863"
-            BuildableName = "Pods_markr.framework"
-            BlueprintName = "Pods-markr"
+            BlueprintIdentifier = "8F3F19EED093C37A0760BEC6A3E936C3"
+            BuildableName = "Pods_Markr.framework"
+            BlueprintName = "Pods-Markr"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

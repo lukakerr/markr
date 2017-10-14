@@ -1,6 +1,6 @@
 //
 //  EditorViewController.swift
-//  markr
+//  Markr
 //
 //  Created by Luka Kerr on 9/10/17.
 //  Copyright © 2017 Luka Kerr. All rights reserved.

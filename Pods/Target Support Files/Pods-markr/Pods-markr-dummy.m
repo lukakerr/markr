@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-@interface PodsDummy_Pods_markr : NSObject
+@interface PodsDummy_Pods_Markr : NSObject
 @end
-@implementation PodsDummy_Pods_markr
+@implementation PodsDummy_Pods_Markr
 @end
