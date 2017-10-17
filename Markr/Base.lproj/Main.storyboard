@@ -53,7 +53,7 @@
                                         <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
                                         <menuItem title="Quit Markr" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
-                                                <action selector="quit:" target="Voe-Tx-rLC" id="xrX-gH-g7z"/>
+                                                <action selector="terminate:" target="Ady-hI-5gd" id="Kd2-Z3-jmM"/>
                                             </connections>
                                         </menuItem>
                                     </items>
