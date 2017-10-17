@@ -38,7 +38,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     return true
   }
-
-
+  
+  @IBAction func quit(_ sender: NSMenuItem) {
+    NSApplication.shared.terminate(self)
+  }
+  
 }
 

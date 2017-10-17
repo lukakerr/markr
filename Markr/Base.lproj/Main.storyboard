@@ -53,7 +53,7 @@
                                         <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
                                         <menuItem title="Quit Markr" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
-                                                <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
+                                                <action selector="quit:" target="Voe-Tx-rLC" id="xrX-gH-g7z"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -63,11 +63,6 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="File" id="bib-Uj-vzu">
                                     <items>
-                                        <menuItem title="New" keyEquivalent="n" id="Was-JA-tGl">
-                                            <connections>
-                                                <action selector="newDocument:" target="Ady-hI-5gd" id="4Si-XN-c54"/>
-                                            </connections>
-                                        </menuItem>
                                         <menuItem title="Open…" alternate="YES" keyEquivalent="o" id="IAo-SY-fd9">
                                             <connections>
                                                 <action selector="openFile:" target="Ady-hI-5gd" id="9Gh-vH-5yh"/>
@@ -665,7 +660,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="markr" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Markr" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -735,7 +730,7 @@
         <scene sceneID="46a-Vb-cXq">
             <objects>
                 <customObject id="29k-dd-a8v" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <windowController id="gyt-SE-RK4" customClass="PreferencesWindowController" customModule="markr" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController id="gyt-SE-RK4" customClass="PreferencesWindowController" customModule="Markr" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="cu7-Ke-0Kw">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -756,7 +751,7 @@
         <scene sceneID="J9F-CK-2f0">
             <objects>
                 <customObject id="UBT-wJ-IZo" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <viewController id="kaZ-jF-Pm2" customClass="PreferencesViewController" customModule="markr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="kaZ-jF-Pm2" customClass="PreferencesViewController" customModule="Markr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="ES7-Ho-21f">
                         <rect key="frame" x="0.0" y="0.0" width="242" height="110"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -790,7 +785,7 @@
         <!--Editor View Controller-->
         <scene sceneID="4tm-06-6eU">
             <objects>
-                <viewController id="iwu-Q3-E8a" customClass="EditorViewController" customModule="markr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iwu-Q3-E8a" customClass="EditorViewController" customModule="Markr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="IzQ-kx-bse">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -887,7 +882,7 @@
         <!--Markdown View Controller-->
         <scene sceneID="ckF-ki-IJJ">
             <objects>
-                <viewController id="ovJ-5Y-NbJ" customClass="MarkdownViewController" customModule="markr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ovJ-5Y-NbJ" customClass="MarkdownViewController" customModule="Markr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="MI3-V7-z8Z">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>

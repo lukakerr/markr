@@ -22,6 +22,8 @@ class EditorViewController: NSViewController {
   let defaults = UserDefaults.standard
   var editingFile = false
   var editingFilePath : URL?
+  var fileChanged = false
+  var editingNewFile = false
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -52,6 +54,22 @@ class EditorViewController: NSViewController {
   @objc dynamic var editorText: String = "" {
     didSet {
       loadMarkdown()
+      
+      if editingFile {
+        fileChanged = true
+        if let path = editingFilePath {
+          setFileLabel(path.lastPathComponent, fileChanged: fileChanged)
+        }
+      }
+      
+      if editingFilePath == nil && !editingFile {
+        editingNewFile = true
+        if (editor.string == "") {
+          setFileLabel("", fileChanged: false)
+        } else {
+          setFileLabel("Untitled", fileChanged: editingNewFile)
+        }
+      }
     }
   }
   
@@ -107,6 +125,8 @@ class EditorViewController: NSViewController {
         // May want to remove all text so dont check if editorText is empty
         do {
           try contents.write(to: path, atomically: true, encoding: .utf8)
+          fileChanged = false
+          setFileLabel(path.lastPathComponent, fileChanged: fileChanged)
           return
         } catch {
           popup(message: "There was an error saving the file.")
@@ -114,11 +134,26 @@ class EditorViewController: NSViewController {
       }
     }
 
+    saveDialog(nil, contents: contents)
+  }
+  
+  @IBAction func saveDocumentAs(_ sender: AnyObject?) {
+    let contents = editor.string
+    if let path = editingFilePath {
+      saveDialog(path, contents: contents)
+    }
+  }
+  
+  func saveDialog(_ path: URL?, contents: String) {
     let dialog = NSSavePanel()
     
     dialog.title = "Save a markdown file"
     dialog.allowedFileTypes = ["md"]
     dialog.canCreateDirectories = false
+    
+    if let path = editingFilePath {
+      dialog.nameFieldStringValue = path.lastPathComponent
+    }
     
     if (dialog.runModal() == NSApplication.ModalResponse.OK) {
       if let result = dialog.url {
@@ -126,7 +161,8 @@ class EditorViewController: NSViewController {
           try contents.write(to: result, atomically: true, encoding: .utf8)
           editingFile = true
           editingFilePath = result
-          setFileLabel(result.lastPathComponent)
+          fileChanged = false
+          setFileLabel(result.lastPathComponent, fileChanged: fileChanged)
         } catch {
           self.popup(message: "There was an error saving the file.")
         }
@@ -148,7 +184,7 @@ class EditorViewController: NSViewController {
         editor.string = contents
         editingFile = true
         editingFilePath = result
-        setFileLabel(result.lastPathComponent)
+        setFileLabel(result.lastPathComponent, fileChanged: fileChanged)
       }
     }
     loadMarkdown()
@@ -161,7 +197,7 @@ class EditorViewController: NSViewController {
       
       let urlPath = NSURL.fileURL(withPath: filePath)
       editingFilePath = urlPath
-      setFileLabel(urlPath.lastPathComponent)
+      setFileLabel(urlPath.lastPathComponent, fileChanged: fileChanged)
     }
     loadMarkdown()
     MarkdownViewController().setWordCountLabel()
@@ -182,8 +218,12 @@ class EditorViewController: NSViewController {
     }
   }
   
-  func setFileLabel(_ fileName: String) {
-    fileLabel.stringValue = fileName
+  func setFileLabel(_ fileName: String, fileChanged: Bool) {
+    if fileChanged {
+      fileLabel.stringValue = fileName + " (edited)"
+    } else {
+      fileLabel.stringValue = fileName
+    }
   }
   
   func popup(message: String) {
