@@ -10,14 +10,10 @@ import Cocoa
 
 class PreferencesWindowController: NSWindowController {
   
-  let defaults = UserDefaults.standard
+  let theme = defaults.string(forKey: "theme") ?? DEFAULT_THEME
   
   override func windowDidLoad() {
     super.windowDidLoad()
-    
-    let theme = defaults.string(forKey: "theme") ?? DEFAULT_THEME
-    
-    setWindowColor(theme: theme)
 
     // Window properties
     window?.titleVisibility = NSWindow.TitleVisibility.hidden;
@@ -26,14 +22,13 @@ class PreferencesWindowController: NSWindowController {
     window?.isOpaque = false
     window?.invalidateShadow()
     
-  }
-  
-  func setWindowColor(theme: String) {
-    if (theme == "Light") {
+    switch theme {
+    case "Light":
       window?.appearance = NSAppearance(named: NSAppearance.Name.vibrantLight)
-    } else {
+    default:
       window?.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
     }
+    
   }
 
 }

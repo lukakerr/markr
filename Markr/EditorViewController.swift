@@ -19,7 +19,6 @@ class EditorViewController: NSViewController {
   @IBOutlet weak var editorBackground: NSVisualEffectView!
   @IBOutlet weak var fileLabel: NSTextField!
   
-  let defaults = UserDefaults.standard
   var editingFile = false
   var editingFilePath : URL?
   var fileChanged = false
@@ -27,12 +26,6 @@ class EditorViewController: NSViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    // Register for keyDown events
-    NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (event) -> NSEvent? in
-      self.keyDown(with: event)
-      return event
-    }
     
     // Register for theme change notification
     NotificationCenter.default.addObserver(
@@ -104,23 +97,19 @@ class EditorViewController: NSViewController {
     let defaultFont = defaults.string(forKey: "font") ?? DEFAULT_FONT
     let defaultFontSize = defaults.string(forKey: "fontSize") ?? DEFAULT_FONT_SIZE
   
-    if (font.fontName != defaultFont) {
+    if font.fontName != defaultFont {
       defaults.setValue(font.fontName, forKey: "font")
     }
   
-    if (font.pointSize != CGFloat(Int(defaultFontSize)!)) {
+    if font.pointSize != CGFloat(Int(defaultFontSize)!) {
       defaults.setValue(font.pointSize, forKey: "fontSize")
     }
-  }
-  
-  override func keyDown(with event: NSEvent) {
-    loadMarkdown()
   }
   
   @IBAction func saveFile(_ sender: AnyObject?) {
     let contents = editor.string
     
-    if (editingFile && editingFilePath != nil) {
+    if editingFile && editingFilePath != nil {
       if let path = editingFilePath {
         // May want to remove all text so dont check if editorText is empty
         do {
@@ -155,7 +144,7 @@ class EditorViewController: NSViewController {
       dialog.nameFieldStringValue = path.lastPathComponent
     }
     
-    if (dialog.runModal() == NSApplication.ModalResponse.OK) {
+    if dialog.runModal() == NSApplication.ModalResponse.OK {
       if let result = dialog.url {
         do {
           try contents.write(to: result, atomically: true, encoding: .utf8)
@@ -178,7 +167,7 @@ class EditorViewController: NSViewController {
     dialog.allowsMultipleSelection = false
     dialog.canChooseDirectories = false
     
-    if (dialog.runModal() == NSApplication.ModalResponse.OK) {
+    if dialog.runModal() == NSApplication.ModalResponse.OK {
       if let result = dialog.url,
         let contents = try? String(contentsOf: result, encoding: .utf8) {
         editor.string = contents
@@ -221,9 +210,9 @@ class EditorViewController: NSViewController {
   func setFileLabel(_ fileName: String, fileChanged: Bool) {
     if fileChanged {
       fileLabel.stringValue = fileName + " (edited)"
-    } else {
-      fileLabel.stringValue = fileName
+      return
     }
+    fileLabel.stringValue = fileName
   }
   
   func popup(message: String) {

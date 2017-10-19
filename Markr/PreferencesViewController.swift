@@ -10,7 +10,11 @@ import Cocoa
 
 class PreferencesViewController: NSViewController {
   
-  let theme = UserDefaults.standard.string(forKey: "theme") ?? DEFAULT_THEME
+  var theme = defaults.string(forKey: "theme") ?? DEFAULT_THEME {
+    didSet {
+      defaults.setValue(theme, forKey: "theme")
+    }
+  }
   
   @IBOutlet weak var themeButton: NSSegmentedControl! {
     didSet {
@@ -27,26 +31,19 @@ class PreferencesViewController: NSViewController {
     super.viewDidLoad()
   }
   
-  var wc = PreferencesWindowController()
-  
   @IBAction func themeChanged(_ sender: NSSegmentedControl) {
-    var chosenTheme = theme
-    
     if (sender.selectedSegment == 0) {
-      chosenTheme = "Light"
+      theme = "Light"
       self.view.window?.appearance = NSAppearance(named: NSAppearance.Name.vibrantLight)
     } else {
-      chosenTheme = "Dark"
+      theme = "Dark"
       self.view.window?.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
     }
-    wc.setWindowColor(theme: chosenTheme)
     
     NotificationCenter.default.post(
       name: NSNotification.Name(rawValue: "themeChangedNotification"),
-      object: chosenTheme
+      object: theme
     )
-    
-    UserDefaults.standard.setValue(chosenTheme, forKey: "theme")
   }
   
 }

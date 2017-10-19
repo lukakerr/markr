@@ -10,15 +10,16 @@ import Cocoa
 
 class MarkdownViewController: NSViewController {
 
-  @IBOutlet var markdown: NSTextView!
   @IBOutlet weak var markdownBackground: NSVisualEffectView!
   @IBOutlet weak var wordCountLabel: NSTextField!
-  
-  let defaults = UserDefaults.standard
+  @IBOutlet var markdown: NSTextView! {
+    didSet {
+      markdown.layoutManager?.defaultAttachmentScaling = NSImageScaling.scaleProportionallyDown
+    }
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    markdown.layoutManager?.defaultAttachmentScaling = NSImageScaling.scaleProportionallyDown
     
     // Register for theme change notification
     NotificationCenter.default.addObserver(
@@ -36,16 +37,15 @@ class MarkdownViewController: NSViewController {
     if theme == nil {
       theme = DEFAULT_THEME
     }
-    if let theme = theme {
-      if (theme == "Light") {
-        self.view.window?.appearance = NSAppearance(named: NSAppearance.Name.vibrantLight)
-        markdownBackground.material = .light
-        markdown.textColor = NSColor.black
-      } else {
-        self.view.window?.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
-        markdownBackground.material = .dark
-        markdown.textColor = NSColor.white
-      }
+    
+    if (theme == "Light") {
+      self.view.window?.appearance = NSAppearance(named: NSAppearance.Name.vibrantLight)
+      markdownBackground.material = .light
+      markdown.textColor = NSColor.black
+    } else {
+      self.view.window?.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
+      markdownBackground.material = .dark
+      markdown.textColor = NSColor.white
     }
   }
   

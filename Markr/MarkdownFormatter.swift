@@ -6,20 +6,13 @@
 //  Copyright © 2017 Luka Kerr. All rights reserved.
 //
 
-import Foundation
 import Cocoa
 
 class MarkdownFormatter {
   
-  let defaults = UserDefaults.standard
-  
   func format(_ markdownString: NSAttributedString) -> NSAttributedString {
-    var attrStr = NSMutableAttributedString(attributedString: markdownString)
-    
-    attrStr = changeFont(attrStr)
-    attrStr = centerImages(attrStr)
-    
-    return attrStr
+    let attrStr = NSMutableAttributedString(attributedString: markdownString)
+    return changeFont(attrStr)
   }
   
   func changeFont(_ attrStr: NSMutableAttributedString) -> NSMutableAttributedString {
@@ -61,13 +54,13 @@ class MarkdownFormatter {
         let newFont = NSFont(descriptor: newFontDescriptor, size: currentFont.pointSize * 1.25) {
         attrStr.addAttributes([NSAttributedStringKey.font: newFont], range: range)
         
-        if (theme == "Light" && !(codeFont != nil)) {
+        if theme == "Light" && codeFont == nil {
           attrStr.addAttribute(
             NSAttributedStringKey.foregroundColor,
             value: NSColor.black,
             range: range
           )
-        } else if (!(codeFont != nil)) {
+        } else if codeFont == nil {
           attrStr.addAttribute(
             NSAttributedStringKey.foregroundColor,
             value: NSColor.white,
@@ -96,7 +89,7 @@ class MarkdownFormatter {
         paragraphStyle.defaultTabInterval = 15
         paragraphStyle.firstLineHeadIndent = 0
         paragraphStyle.headIndent = 0
-        if (!(codeFont != nil)) {
+        if codeFont == nil {
           paragraphStyle.paragraphSpacing = 15
         } else {
           paragraphStyle.paragraphSpacing = 7.5
@@ -106,23 +99,6 @@ class MarkdownFormatter {
           NSAttributedStringKey.paragraphStyle,
           value: paragraphStyle,
           range: range
-        )
-      }
-    }
-    return attrStr
-  }
-  
-  func centerImages(_ attrStr: NSMutableAttributedString) -> NSMutableAttributedString {
-    // Enumerate over images in attributed string and center them
-    attrStr.enumerateAttribute(NSAttributedStringKey.attachment, in: NSMakeRange(0, attrStr.length), options: []) { value, range, stop in
-      if (value as? NSTextAttachment) != nil {
-        let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .center
-        
-        attrStr.addAttribute(
-          NSAttributedStringKey.paragraphStyle,
-          value: paragraphStyle,
-          range: NSRange(location: range.location, length: range.length)
         )
       }
     }

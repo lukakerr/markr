@@ -8,6 +8,8 @@
 
 import Cocoa
 
+let defaults = UserDefaults.standard
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
@@ -26,7 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   func applicationWillTerminate(_ aNotification: Notification) {
   }
   
-  // Close the application when there are no mode windows left
+  // Close the application when there are no windows left
   func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
    return true
   }
@@ -36,8 +38,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let window = NSApplication.shared.windows.first!
     if let editorViewController = window.contentViewController?.childViewControllers[0] as? EditorViewController {
       editorViewController.loadFile(filename)
+      return true
     }
-    return true
+    return false
   }
   
 }
