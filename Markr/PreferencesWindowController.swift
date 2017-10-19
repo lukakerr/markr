@@ -17,15 +17,14 @@ class PreferencesWindowController: NSWindowController {
     
     let theme = defaults.string(forKey: "theme") ?? DEFAULT_THEME
     
-    if let window = window {
-      setWindowColor(theme: theme)
-      
-      window.titleVisibility = NSWindow.TitleVisibility.hidden;
-      window.titlebarAppearsTransparent = true;
-      window.styleMask.insert(.fullSizeContentView)
-      window.isOpaque = false
-      window.invalidateShadow()
-    }
+    setWindowColor(theme: theme)
+
+    // Window properties
+    window?.titleVisibility = NSWindow.TitleVisibility.hidden;
+    window?.titlebarAppearsTransparent = true;
+    window?.styleMask.insert(.fullSizeContentView)
+    window?.isOpaque = false
+    window?.invalidateShadow()
     
   }
   
