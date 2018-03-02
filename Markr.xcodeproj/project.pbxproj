@@ -14,6 +14,7 @@
 		A11CF92C1F8B4E2E002BD372 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11CF92B1F8B4E2E002BD372 /* EditorViewController.swift */; };
 		A11CF92E1F8B4E52002BD372 /* MarkdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11CF92D1F8B4E52002BD372 /* MarkdownViewController.swift */; };
 		A1B5F19E1F9182AC0000B40D /* MarkdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B5F19D1F9182AB0000B40D /* MarkdownFormatter.swift */; };
+		A1DA46291FA0516900D4C565 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A1DA46281FA0516900D4C565 /* README.md */; };
 		A1E657AE1F8D88FE009B2768 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E657AD1F8D88FE009B2768 /* PreferencesViewController.swift */; };
 		A1E657B01F8D891C009B2768 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E657AF1F8D891C009B2768 /* PreferencesWindowController.swift */; };
 		CA63136207729E358D935359 /* Pods_markr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30CB73E6CA5A7AE5F9603168 /* Pods_markr.framework */; };
@@ -32,6 +33,7 @@
 		A11CF92B1F8B4E2E002BD372 /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		A11CF92D1F8B4E52002BD372 /* MarkdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownViewController.swift; sourceTree = "<group>"; };
 		A1B5F19D1F9182AB0000B40D /* MarkdownFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownFormatter.swift; sourceTree = "<group>"; };
+		A1DA46281FA0516900D4C565 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		A1E657AD1F8D88FE009B2768 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		A1E657AF1F8D891C009B2768 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,6 +93,7 @@
 				A11CF91B1F8B4D83002BD372 /* AppDelegate.swift */,
 				A11CF91F1F8B4D83002BD372 /* Assets.xcassets */,
 				A11CF9211F8B4D83002BD372 /* Main.storyboard */,
+				A1DA46281FA0516900D4C565 /* README.md */,
 				A1E657AF1F8D891C009B2768 /* PreferencesWindowController.swift */,
 				A1E657AD1F8D88FE009B2768 /* PreferencesViewController.swift */,
 				A11CF92D1F8B4E52002BD372 /* MarkdownViewController.swift */,
@@ -163,6 +166,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1DA46291FA0516900D4C565 /* README.md in Resources */,
 				A11CF9201F8B4D83002BD372 /* Assets.xcassets in Resources */,
 				A11CF9231F8B4D83002BD372 /* Main.storyboard in Resources */,
 			);
