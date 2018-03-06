@@ -53,6 +53,7 @@ class MarkdownViewController: NSViewController {
     let formattedMarkdown = MarkdownFormatter().format(markdownString)
     markdown.textStorage?.mutableString.setString("")
     markdown.textStorage?.append(formattedMarkdown)
+    markdown.textStorage?.endEditing()
     setWordCountLabel()
   }
   

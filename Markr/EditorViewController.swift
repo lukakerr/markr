@@ -23,6 +23,8 @@ class EditorViewController: NSViewController {
   var editingFilePath : URL?
   var fileChanged = false
   var editingNewFile = false
+    
+  var debouncedLoadMarkdown: Debouncer!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -42,11 +44,15 @@ class EditorViewController: NSViewController {
     editor.font = NSFont(name: defaultFont, size: CGFloat(Int(defaultFontSize)!))
     
     setTheme(nil)
+    
+    debouncedLoadMarkdown = Debouncer(delay: 0.3) {
+        self.loadMarkdown()
+    }
   }
   
   @objc dynamic var editorText: String = "" {
     didSet {
-      loadMarkdown()
+      debouncedLoadMarkdown.call()
       
       if editingFile {
         fileChanged = true
@@ -193,17 +199,25 @@ class EditorViewController: NSViewController {
   }
   
   func loadMarkdown() {
-    let down = Down(markdownString: editor.string)
-    
     if let font = editor.font {
-      setFont(font: font)
+        setFont(font: font)
     }
     
-    if let attrMarkdown = try? down.toAttributedString(),
-      let splitViewController = self.parent as? NSSplitViewController,
-      let markdownSplitView = splitViewController.splitViewItems.last {
-      let markdownVC = markdownSplitView.viewController as? MarkdownViewController
-        markdownVC?.setMarkdown(attrMarkdown)
+    let string = editor.string
+    
+    DispatchQueue.global(qos: .userInitiated).async {
+        if let splitViewController = self.parent as? NSSplitViewController,
+            let markdownSplitView = splitViewController.splitViewItems.last {
+            if let markdownVC = markdownSplitView.viewController as? MarkdownViewController {
+                markdownVC.markdown.textStorage?.beginEditing()
+                
+                if let attrMarkdown = try? Down(markdownString: string).toAttributedString() {
+                    DispatchQueue.main.async {
+                        markdownVC.setMarkdown(attrMarkdown)
+                    }
+                }
+            }
+        }
     }
   }
   

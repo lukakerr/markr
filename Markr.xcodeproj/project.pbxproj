@@ -18,6 +18,7 @@
 		A1E657AE1F8D88FE009B2768 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E657AD1F8D88FE009B2768 /* PreferencesViewController.swift */; };
 		A1E657B01F8D891C009B2768 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E657AF1F8D891C009B2768 /* PreferencesWindowController.swift */; };
 		CA63136207729E358D935359 /* Pods_markr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30CB73E6CA5A7AE5F9603168 /* Pods_markr.framework */; };
+		D85814F0204E65C9007ED0B3 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85814EF204E65C9007ED0B3 /* Debouncer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		A1DA46281FA0516900D4C565 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		A1E657AD1F8D88FE009B2768 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		A1E657AF1F8D891C009B2768 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
+		D85814EF204E65C9007ED0B3 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				A1B5F19D1F9182AB0000B40D /* MarkdownFormatter.swift */,
 				A11CF92B1F8B4E2E002BD372 /* EditorViewController.swift */,
 				A11CF9241F8B4D83002BD372 /* Info.plist */,
+				D85814EF204E65C9007ED0B3 /* Debouncer.swift */,
 			);
 			path = Markr;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 			files = (
 				A11CF92E1F8B4E52002BD372 /* MarkdownViewController.swift in Sources */,
 				A11CF92C1F8B4E2E002BD372 /* EditorViewController.swift in Sources */,
+				D85814F0204E65C9007ED0B3 /* Debouncer.swift in Sources */,
 				A1E657B01F8D891C009B2768 /* PreferencesWindowController.swift in Sources */,
 				A11CF91C1F8B4D83002BD372 /* AppDelegate.swift in Sources */,
 				A1E657AE1F8D88FE009B2768 /* PreferencesViewController.swift in Sources */,
