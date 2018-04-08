@@ -12,10 +12,6 @@ Simply start typing and immediately see rendered markdown.
 - Dark and light modes
 - Word count
 
-### Download
-
-Download at [lukakerr.github.io](https://lukakerr.github.io/projects/markr.html)
-
 ### Screenshots
 
 <div style="text-align:center">
