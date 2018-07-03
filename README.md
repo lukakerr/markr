@@ -1,5 +1,7 @@
 # Markr
 
+![Github All Releases](https://img.shields.io/github/downloads/lukakerr/markr/total.svg)
+
 **Also check out [Twig](https://github.com/lukakerr/twig), a modern MacOS markdown editor and the successor to Markr**
 
 Markr is a minimal, lightweight MacOS desktop application for markdown editing. 
