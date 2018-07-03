@@ -1,5 +1,7 @@
 # Markr
 
+**Also check out [Twig](https://github.com/lukakerr/twig), a modern MacOS markdown editor and the successor to Markr**
+
 Markr is a minimal, lightweight MacOS desktop application for markdown editing. 
 
 Simply start typing and immediately see rendered markdown.
